@@ -3,7 +3,9 @@ import { useDebounce } from 'react-use';
 import Search from './components/Search';
 import Spinner from './components/Spinner';
 import MovieCard from './components/MovieCard';
-import { getTrendingMovies, updateSearchCount } from './appwright.js';
+import { supabase } from './supabase';
+import { getTrendingMovies, updateSearchCount } from './supabase';
+
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -103,7 +105,7 @@ const App = () => {
 
             <ul>
               {trendingMovies.map((movie, index) => (
-                <li key={movie.$id}>
+                <li key={movie.id}>
                   <p>{index + 1}</p>
                   <img src={movie.poster_url} alt={movie.title} />
                 </li>
